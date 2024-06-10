@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2317
-#  PURPOSE: Description
+#  PURPOSE: This script installs FluxCD and bootstraps it to a GitLab repo.
 # -----------------------------------------------------------------------------
-#  PREREQS: a)
-#           b)
+#  PREREQS: a) Create a new repo and copy the URL.
+#                The repo name only has to make sense to you.
+#                Replace 'flux-kustomize' with your repo name below.
+#                Replace 'gitops-demo-stage' with your cluster name below.
+#           b) Create a new GitLab 'Deploy Token' with 'api' and 'read_repository' scopes.
 #           c)
 # -----------------------------------------------------------------------------
-#  EXECUTE:
+#  EXECUTE: ./flux-inst.sh
 # -----------------------------------------------------------------------------
 #     TODO: 1)
 #           2)
@@ -14,7 +17,7 @@
 # -----------------------------------------------------------------------------
 #   AUTHOR: Todd E Thomas
 # -----------------------------------------------------------------------------
-#  CREATED: 2024/00/00
+#  CREATED: 2024/05/01
 # -----------------------------------------------------------------------------
 set -x
 
@@ -64,7 +67,7 @@ pMsg "Bootstrapping FluxCD..."
 flux bootstrap gitlab \
   --token-auth \
   --owner=vstthomas \
-  --repository=flux-infras \
+  --repository=flux-kustomize \
   --branch=main \
   --path=clusters/gitops-demo-stage \
   --hostname=gitlab.com \
